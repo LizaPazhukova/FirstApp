@@ -15,6 +15,13 @@ namespace FirstApp.Logic.Services
             _unitOfWork = unitOfWork;
             _mapper = mapper;
         }
+
+        public async Task<IEnumerable<ListDTO>> GetAll()
+        {
+            var lists = await _unitOfWork.Lists.GetAllAsync();
+           return _mapper.Map<IEnumerable<ListDTO>>(lists);
+        }
+
         public async Task Add(ListDTO listDTO)
         {
             var list = _mapper.Map<List>(listDTO);

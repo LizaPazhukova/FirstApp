@@ -6,6 +6,8 @@ using FirstApp.Logic.MappingProfiles;
 using FirstApp.Logic.Services;
 using Microsoft.EntityFrameworkCore;
 
+string CORSOpenPolicy = "OpenCORSPolicy";
+
 var builder = WebApplication.CreateBuilder(args);
 
 
@@ -19,6 +21,15 @@ builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
 builder.Services.AddScoped<ICardService, CardService>();
 builder.Services.AddScoped<IListService, ListService>();
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(
+      name: CORSOpenPolicy,
+      builder => {
+          builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();
+      });
+});
 
 builder.Services.AddControllers();
 
@@ -35,6 +46,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseCors(CORSOpenPolicy);
 
 app.UseAuthorization();
 
