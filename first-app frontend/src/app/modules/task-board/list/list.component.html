@@ -1,5 +1,16 @@
-<ul>
+<div class="flex flex-row">
+  <ng-container *ngFor="let list of lists$ | async; index as i">
+    <div class="flex-col m-4 basis-1/4">
+      <div class="border-solid border-2 border-y-gray-200 border-x-0">{{ list.name }}</div>
+      <app-card></app-card>
+    </div>
+    
+  </ng-container>
+</div>
+
+
+<!-- <ul>
     <li *ngFor="let list of lists$ | async; index as i">
       {{ i + 1 }}. {{ list.name }}
     </li>
-  </ul>
+  </ul> -->

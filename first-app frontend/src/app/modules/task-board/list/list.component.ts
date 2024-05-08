@@ -3,11 +3,12 @@ import { ListService } from '../../../core/services/list.service';
 import { Observable } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { ListDTO } from '../../../shared/models/list/list-dto';
+import { CardComponent } from '../card/card.component';
 
 @Component({
   selector: 'app-list',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, CardComponent],
   templateUrl: './list.component.html',
   styleUrl: './list.component.css'
 })

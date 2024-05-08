@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { ListComponent } from '../../list/list.component';
+import { ListComponent } from '../list/list.component';
+import { CardComponent } from '../card/card.component';
 
 @Component({
   selector: 'app-task-board',
